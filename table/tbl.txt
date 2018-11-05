@@ -1,0 +1,111 @@
+public void verifySegmentContent1(
+			) throws InterruptedException {
+		Thread.sleep(3000);
+		
+		
+		/*Thread.sleep(3000);
+		String referenceVar = "LH112";
+		int[] verfVar = {4,5};
+		String[] actVerfValues = { "FRA", "MUC"};
+		comm.verify_tbl_records_multiple_cols(
+				sheetName, "table_segmentcontent;xpath", "//td",
+				verfVar, referenceVar, actVerfValues);*/
+		
+		/*int col_num=0;
+		int row_num=1;
+		int colsize=0;
+		int flag=0;
+		WebElement element1=driver.findElement(By.xpath("(.//*[@class='icePnlGrd bookingSegmentTable'])[1]"));
+		List<WebElement> totalRows=element1.findElements(By.tagName("tr"));
+		for(WebElement rowElement : totalRows)
+		{
+			List<WebElement> totalColumns=rowElement.findElements(By.tagName("td"));
+			colsize=totalColumns.size();
+		}
+		
+		Map<Integer,String>hm=new HashMap<Integer,String>();
+		hm.put(3, "LH112");
+		hm.put(5, "FRA");
+		hm.put(6, "MUC");
+		hm.put(10, "FC");
+		
+		
+		for(int i=1;i<totalRows.size();i++)
+		{
+			
+			for(Integer key:hm.keySet())
+			{
+			
+				
+				flag=0;
+				//System.out.println("row # "+row_num+", col # "+col_num+ "text="+columnElement.getText());
+				
+				//System.out.println("row # "+row_num+", col # "+col_num+ "text="+columnElement.getText());
+				try
+				{
+				//actText=driver.findElement(By.xpath("/html/body/div[2]/div[2]/form[2]/div/table/tbody/tr[2]/td/div/table/tbody/tr["+i+"]/td["+key+"]/input")).getAttribute("value").replace(" ", "");
+					actText=driver.findElement(By.xpath("(.//*[@class='icePnlGrd bookingSegmentTable'])[1]//tr["+i+"]//td["+key+"]//input")).getAttribute("value").replace(" ", "");
+				System.out.print("row # "+i+", col # "+key+ "text="+actText);
+				System.out.println();
+				
+				if(hm.get(key).equals(actText))
+				{
+					flag=1;
+					continue;
+				}
+				else
+				{
+					break;
+				}
+				}
+				catch(Exception ex)
+				{
+					break;
+				}
+				
+				
+				
+			
+			
+			
+			
+		}
+			if(flag==1)
+			{
+				System.out.println("+++++++++++++++++Found+++++++++++++++++++++");
+				break;
+			}
+			else
+			{
+				System.out.println("+++++++++++++++++Not-Found+++++++++++++++++++++");
+			}
+		}
+		
+		
+		
+		
+	*/
+		
+		
+		int col_num=0;
+		int row_num=1;
+		WebElement element1=driver.findElement(By.xpath("(.//*[@class='icePnlGrd bookingSegmentTable'])[1]"));
+		List<WebElement> totalRows=element1.findElements(By.tagName("tr"));
+		System.out.println("Total row count check is  --------"+totalRows.size());
+
+		for(WebElement rowElement : totalRows)
+		{
+			List<WebElement> totalColumns=rowElement.findElements(By.xpath("td//input"));
+			System.out.println("Total column count check is  --------"+totalColumns.size());
+			col_num=1;
+			for(WebElement columnElement : totalColumns)
+			{
+				System.out.println("row # "+row_num+", col # "+col_num+ "text="+columnElement.getAttribute("value"));
+				
+				col_num++;
+			}
+			
+			row_num++;
+		} 
+	}
+		
